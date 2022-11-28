@@ -22,7 +22,7 @@ Cat Diagnostic adalah sebuah aplikasi web yang dapat digunakan untuk membantu pa
 4. Aplikasi akan berjalan pada [localhost:8501](http://localhost:8501)
 
 
-Aplikasi ini dibuat untuk. memenuhi capstone project program SIB x Dicoding batch 3 dengan tema Solusi terkait Kesehatan dan Kesejahteraan Lingkungan [Health and 
+Aplikasi ini dibuat untuk capstone project program SIB x Dicoding batch 3 dengan tema Solusi terkait Kesehatan dan Kesejahteraan Lingkungan [Health and 
 Environmental Welfare]
 
 Aplikasi ini dibuat menggunakan [Streamlit](https://streamlit.io/).
