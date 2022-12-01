@@ -1,11 +1,13 @@
 # Cat Diagnostic
 
-Cat Diagnostic adalah sebuah aplikasi web yang dapat digunakan untuk membantu para pemelihara kucing melakukan diagnosa kondisi kesehatan pada kucingnya. Aplikasi ini dapat memberikan diagnosa penyakit kucing berdasarkan gejala yang dialami. Aplikasi ini juga dapat memberikan informasi mengenai penyakit yang diderita oleh kucing.
+[![Figma](https://shields.io/badge/Prototype-FFCB2F?logo=figma&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
+[![Github Prototype](https://shields.io/badge/Prototype-darkgray?logo=github&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
 
+Cat Diagnostic adalah sebuah aplikasi web yang dapat digunakan untuk membantu para pemelihara kucing melakukan diagnosa kondisi kesehatan pada kucingnya. Aplikasi ini dapat memberikan diagnosa penyakit kucing berdasarkan gejala yang dialami. Aplikasi ini juga dapat memberikan informasi mengenai penyakit yang diderita oleh kucing.
 
 ## How to use
 
-> Sebelum menggunakan aplikasi ini, pastikan Python 3 sudah terinstall di komputer anda.
+> Sebelum menggunakan aplikasi ini, pastikan Python 3.7+ sudah terinstall di komputer anda, informasi lebih lanjut mengenai system requirements dapat dilihat di [sini](https://docs.streamlit.io/library/get-started/installation#prerequisites).
 
 1. Clone  repository ini
 
