@@ -16,3 +16,8 @@ class Home:
             st.markdown('''
                 <p style="font-size:1rem;"><i>Cat Diagnostic</i> adalah aplikasi web yang dapat membantu Anda untuk mendiagnosis kondisi kesehatan kucing Anda. Aplikasi ini dapat mendiagnosis penyakit kucing berdasarkan gejala yang dialami, Aplikasi ini juga dapat memberikan informasi mengenai penyakit kucing yang diderita oleh kucing.</p>
             ''', unsafe_allow_html=True)
+        
+        st.markdown('''
+            <br/>
+            <p style="font-size:1rem;">Cara kerja aplikasi ini adalah para pemelihara kucing dapat memiilih gejala yang dialami oleh kucing pada menu “Prediction”. Dan nantinya akan didapatkan hasil prediksi penyakit yang diderita oleh kucing dan bagaimana cara mengatasinya. Dengan begitu para pemelihara kucing dapat melakukan penanganan atau pengobatan yang tepat pada kucingnya.</p>
+        ''', unsafe_allow_html=True)
