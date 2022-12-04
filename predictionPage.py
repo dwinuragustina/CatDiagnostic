@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.metrics import accuracy_score
 
+
 class Prediction:
     def __init__(self):
         self.option = ["Home", "Prediction", "Help"]
@@ -18,7 +19,7 @@ class Prediction:
     def main(self):
 
         st.markdown('''
-            ### Prediction
+            #### *Prediction*
             Sebelum melakukan prediksi, pastikan anda melengkapi semua data yang dibutuhkan berikut ini:
             <br/>
         ''', unsafe_allow_html=True)
@@ -63,7 +64,11 @@ class Prediction:
                 st.markdown('''
                     <hr />
                 ''', unsafe_allow_html=True)
-                
+
+                st.markdown('''
+                    #### *Hasil Prediksi*
+                ''', unsafe_allow_html=True)
+
                 # prepare data
                 attributes = self.df.drop("penyakit", axis=1)
                 labels = self.df["penyakit"]
@@ -75,9 +80,9 @@ class Prediction:
 
                 # split data
                 X_train, X_test, y_train, y_test = train_test_split(
-                    attributes, 
-                    labels, 
-                    test_size=0.2, 
+                    attributes,
+                    labels,
+                    test_size=0.2,
                     random_state=42
                 )
 
@@ -103,16 +108,6 @@ class Prediction:
                     <p style="font-size: 20px; font-weight: bold; margin-top:-1em; font-style: italic;">{nama_kucing.capitalize()}</p>
                     Menderita penyakit <br />
                     <p style="font-size: 26px; font-weight: bold; font-style: italic;">{prediksi[0].capitalize()}</p>
-                ''', unsafe_allow_html=True)
-
-                # backgrond color
-                st.markdown('''
-                    <style>
-                        .stButton > button:first-child {
-                            background-color: #f5f5f5;
-                            color: #000;
-                        }
-                    </style>
                 ''', unsafe_allow_html=True)
 
                 penyakit = json.load(open("./dataset/penyakit.json", "r"))
