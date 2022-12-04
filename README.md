@@ -1,7 +1,7 @@
 # Cat Diagnostic
 
 [![Figma](https://shields.io/badge/Prototype-FFCB2F?logo=figma&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
-[![Github Prototype](https://shields.io/badge/Prototype-darkgray?logo=github&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
+[![Github Prototype](https://shields.io/badge/Prototype-darkgray?logo=github&style=for-the-badge)](./Prototype/README.md)
 
 [![Github Prototype](https://colab.research.google.com/assets/colab-badge.svg)](./model_ml/Cat_Diagnostic.ipynb)
 
