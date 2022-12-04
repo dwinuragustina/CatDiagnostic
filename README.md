@@ -3,6 +3,8 @@
 [![Figma](https://shields.io/badge/Prototype-FFCB2F?logo=figma&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
 [![Github Prototype](https://shields.io/badge/Prototype-darkgray?logo=github&style=for-the-badge)](https://www.figma.com/proto/7KjrVSGhPD5iKGSXww90x8/CAT)
 
+[![Github Prototype](https://colab.research.google.com/assets/colab-badge.svg)](./model_ml/Cat_Diagnostic.ipynb)
+
 Cat Diagnostic adalah sebuah aplikasi web yang dapat digunakan untuk membantu para pemelihara kucing melakukan diagnosa kondisi kesehatan pada kucingnya. Aplikasi ini dapat memberikan diagnosa penyakit kucing berdasarkan gejala yang dialami. Aplikasi ini juga dapat memberikan informasi mengenai penyakit yang diderita oleh kucing.
 
 ## How to use
