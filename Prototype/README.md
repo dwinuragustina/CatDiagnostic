@@ -16,9 +16,9 @@ Prediksi yang dilakukan menggunakan algoritma K-NN (*K-Nearest Neighbors*), dima
 
 ### **Prediction Result**
 <!-- prediction result -->
-![Prediction Result](./images/Prediction%20-%20result%20modal.png)
+![Prediction Result](./images/Prediction%20-%20result.png)
 
-Setelah melakukan prediksi, maka akan muncul modal yang berisi hasil prediksi dari kucing tersebut.
+Setelah melakukan prediksi, hasil akan ditampilkan di halaman ini. Halaman ini berisi informasi mengenai hasil prediksi, dan juga informasi mengenai penyakit yang diderita kucing tersebut. selain itu terdapat informasi mengenai penyakit yang diderita kucing tersebut, dan juga tips seputar penyakit tersebut.
 
 ---
 
