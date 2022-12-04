@@ -1,38 +1,32 @@
-import streamlit as st
-from streamlit_modal import Modal
+import json
 import pandas as pd
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-import numpy as np
-from sklearn.preprocessing import LabelBinarizer
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
+import streamlit as st
 
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import LabelBinarizer
+from sklearn.metrics import accuracy_score
 
 class Prediction:
     def __init__(self):
         self.option = ["Home", "Prediction", "Help"]
 
-        self.df = pd.read_csv("./dataset/data.csv")
+        self.df = pd.read_csv("./dataset/data_lama.csv")
         self.symptoms = self.df.columns[:-1]
         self.diseases = self.df["penyakit"].unique()
 
     def main(self):
-        modal = Modal("Modal Hasil Prediksi", "modal_hasil_prediksi")
 
         st.markdown('''
             ### Prediction
             Sebelum melakukan prediksi, pastikan anda melengkapi semua data yang dibutuhkan berikut ini:
-        ''')
-
-        st.markdown(''' --- ''')
-
+            <br/>
+        ''', unsafe_allow_html=True)
         # column 1
         col1, col2 = st.columns(2)
         # col 1 text field
         with col1:
-            st.text_input("Nama Kucing", "")
+            nama_kucing = st.text_input("Nama Kucing", "")
 
         # Gejala
         st.markdown(''' ''')
@@ -54,62 +48,84 @@ class Prediction:
         predict = st.button("Predict")
 
         if predict:
-            modal.open()
+            # check nama kucing
+            if nama_kucing == "":
+                st.error("Nama kucing Harus diisi!", icon="🚨")
+            # check gejala tidak kosong
+            elif not any(user_input):
+                st.error("Gejala Harus dipilih!", icon="🚨")
+            # check gejala < 3
+            elif sum(user_input) < 3:
+                st.info("Gejala Harus lebih dari 3!", icon="ℹ️")
+            # open model
+            else:
+                # separator
+                st.markdown('''
+                    <hr />
+                ''', unsafe_allow_html=True)
+                
+                # prepare data
+                attributes = self.df.drop("penyakit", axis=1)
+                labels = self.df["penyakit"]
 
-        if modal.is_open():
-            with modal.container():
-                # Membaca dataset dari folder dataset dan melakukan data prepocessing
-                df = pd.read_csv('dataset/data.csv')
-                attributes = np.array(df[['anorexia', 'muntah', 'lemah', 'kurang_respon', 'dehidrasi', 'demam', 'diare', 'hipersevalis',
-                                         'radang_telinga', 'batuk', 'hidung_meler', 'gatal', 'telinga_keropeng', 'pilek', 'bersin2', 'mata_berair']])
-                lables = np.array(df['penyakit'])
+                # convert dataset
                 lb = LabelBinarizer()
-                new_lables = lb.fit_transform(lables)
-                # End data processing
+                labels = lb.fit_transform(labels)
+                attributes = attributes.replace({"Yes": 1, "No": 0})
 
-                # Membagi dataset menjadi data train dan data test
+                # split data
                 X_train, X_test, y_train, y_test = train_test_split(
-                    attributes, new_lables, test_size=0.2)
-                # End pembagian dataset
+                    attributes, 
+                    labels, 
+                    test_size=0.2, 
+                    random_state=42
+                )
 
-                # Membuat model KNN
-                K = 3
-                model = KNeighborsClassifier(n_neighbors=K)
+                # create model
+                model = KNeighborsClassifier(n_neighbors=3)
+
+                # fit model
                 model.fit(X_train, y_train)
-                # End model KNN
 
-                # Menerima input dari user
-                anorexia = 0
-                muntah = 0
-                lemah = 0
-                kurang_respon = 0
-                dehidrasi = 0
-                demam = 1
-                diare = 1
-                hipersevalis = 1
-                radang_telinga = 1
-                batuk = 1
-                hidung_meler = 1
-                gatal = 1
-                telinga_keropeng = 1
-                pilek = 1
-                bersin2 = 1
-                mata_berair = 1
-                # End menerima input dari user
-
-                # Proses prediksi
-                X_new = np.array([anorexia, muntah, lemah, kurang_respon, dehidrasi, demam, diare, hipersevalis, radang_telinga,
-                                 batuk, hidung_meler, gatal, telinga_keropeng, pilek, bersin2, mata_berair]).reshape(1, -1)
-                y_new = model.predict(X_new)
-                prediksi = lb.inverse_transform(y_new)
-                # End proses prediksi
-
-                # Cek akurasi dan report classification
+                # get accuracy
                 y_pred = model.predict(X_test)
-                acc = accuracy_score(y_test, y_pred)
-                cls_report = classification_report(y_test, y_pred)
-                # End akurasi dan report classification
-                st.write("Modal is open")
-                st.write("Hasil Prediksi : ", prediksi)
-                st.write("Akurasi : ", acc)
-                st.write("Classification Report : ", cls_report)
+                accuracy = accuracy_score(y_test, y_pred)
+
+                # user_input to dataframe
+                user_input_df = pd.DataFrame(user_input)
+
+                # predict
+                prediksi = lb.inverse_transform(model.predict(user_input_df.T))
+
+                # show result
+                st.markdown(f'''
+                    Halo, Kucing anda yang bernama <br/>
+                    <p style="font-size: 20px; font-weight: bold; margin-top:-1em; font-style: italic;">{nama_kucing.capitalize()}</p>
+                    Menderita penyakit <br />
+                    <p style="font-size: 26px; font-weight: bold; font-style: italic;">{prediksi[0].capitalize()}</p>
+                ''', unsafe_allow_html=True)
+
+                # backgrond color
+                st.markdown('''
+                    <style>
+                        .stButton > button:first-child {
+                            background-color: #f5f5f5;
+                            color: #000;
+                        }
+                    </style>
+                ''', unsafe_allow_html=True)
+
+                penyakit = json.load(open("./dataset/penyakit.json", "r"))
+                penyakit = penyakit[prediksi[0]]
+
+                st.markdown('''
+                    <br /> 
+                    
+                    ##### Tentang Penyakit
+                ''', unsafe_allow_html=True)
+
+                # loop penyakit keys
+                for key in penyakit.keys():
+                    # expandable
+                    with st.expander(key):
+                        st.write(penyakit[key])
