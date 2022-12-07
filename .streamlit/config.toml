@@ -2,3 +2,6 @@
 primaryColor="#ff0068"
 backgroundColor="#ffecce"
 secondaryBackgroundColor="#fec76d"
+
+[browser]
+gatherUsageStats=false
