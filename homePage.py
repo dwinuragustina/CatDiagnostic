@@ -14,7 +14,7 @@ class Home:
         with col2 :
             st.markdown('''#### *Cat Diagnostic*''', unsafe_allow_html=True)
             st.markdown('''
-                <p style="font-size:1rem;"><i>Cat Diagnostic</i> adalah aplikasi web yang dapat membantu Anda untuk mendiagnosis kondisi kesehatan kucing Anda. Aplikasi ini dapat mendiagnosis penyakit kucing berdasarkan gejala yang dialami, Aplikasi ini juga dapat memberikan informasi mengenai penyakit kucing yang diderita oleh kucing.</p>
+                <p style="font-size:1rem;"><i>Cat Diagnostic</i> adalah sebuah aplikasi web yang dapat digunakan untuk membantu para pemelihara kucing melakukan diagnosa kondisi kesehatan pada kucingnya. Aplikasi ini dapat memberikan diagnosa penyakit kucing berdasarkan gejala yang dialami. Aplikasi ini juga dapat memberikan informasi mengenai penyakit yang diderita oleh kucing.</p>
             ''', unsafe_allow_html=True)
         
         st.markdown('''
