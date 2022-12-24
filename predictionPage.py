@@ -104,7 +104,7 @@ class Prediction:
 
                 # show result
                 st.markdown(f'''
-                    Halo, Kucing anda yang bernama <br/>
+                    Haloo, Kucing anda yang bernama <br/>
                     <p style="font-size: 20px; font-weight: bold; margin-top:-1em; font-style: italic;">{nama_kucing.capitalize()}</p>
                     Menderita penyakit <br />
                     <p style="font-size: 26px; font-weight: bold; font-style: italic;">{prediksi[0].capitalize()}</p>
